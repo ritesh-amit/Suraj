@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:suraj/forgotPassword.dart';
+import 'package:suraj/home.dart';
+import 'package:suraj/homePage.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -108,11 +110,11 @@ class _LoginState extends State<Login> {
                       splashColor: maC,
                       color: maC,
                       onPressed: () {
-                        /*Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CustomerLogin();
-                    }),
-                  );*/
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return MyHomePage();
+                          }),
+                        );
                       },
                       padding: EdgeInsets.symmetric(
                           horizontal: b * 25, vertical: h * 15),

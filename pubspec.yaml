@@ -30,7 +30,9 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_auth:
   firebase_core:
-  shared_preferences:    
+  shared_preferences:  
+  carousel_pro:  
+  bottom_navy_bar: ^6.0.0
 
 dev_dependencies:
   flutter_test:
