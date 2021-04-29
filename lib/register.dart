@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:suraj/forgotPassword.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/login.dart';
+import 'package:suraj/models/currentUser.dart';
+import 'package:suraj/testPage.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -17,6 +22,8 @@ class _RegisterState extends State<Register> {
   bool isVisible = false;
   bool isVisible2 = false;
   bool rad = false;
+  SharedPreferences pref;
+  String uid = '';
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +54,9 @@ class _RegisterState extends State<Register> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(b * 10),
                       ),
-                      child: TextField(
+                      child: TextFormField(
                         controller: nameController,
-                        keyboardType: TextInputType.emailAddress,
+                        keyboardType: TextInputType.name,
                         style: txtS(Colors.black, 16, FontWeight.w500),
                         decoration: dec('Full Name'),
                       ),
@@ -61,7 +68,7 @@ class _RegisterState extends State<Register> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(b * 10),
                       ),
-                      child: TextField(
+                      child: TextFormField(
                         controller: emailController,
                         keyboardType: TextInputType.emailAddress,
                         style: txtS(Colors.black, 16, FontWeight.w500),
@@ -71,7 +78,7 @@ class _RegisterState extends State<Register> {
                     sh(10),
                     Container(
                       width: b * 345,
-                      child: TextField(
+                      child: TextFormField(
                         controller: pwdController,
                         keyboardType: TextInputType.visiblePassword,
                         style: txtS(Colors.black, 16, FontWeight.w500),
@@ -121,7 +128,7 @@ class _RegisterState extends State<Register> {
                     sh(10),
                     Container(
                       width: b * 345,
-                      child: TextField(
+                      child: TextFormField(
                         controller: pwdController2,
                         keyboardType: TextInputType.visiblePassword,
                         style: txtS(Colors.black, 16, FontWeight.w500),
@@ -223,11 +230,9 @@ class _RegisterState extends State<Register> {
                       splashColor: maC,
                       color: maC,
                       onPressed: () {
-                        /*Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CustomerRegister();
-                    }),
-                  );*/
+                        if (fieldValidation()) {
+                          signUpEmail();
+                        }
                       },
                       padding: EdgeInsets.symmetric(
                           horizontal: b * 25, vertical: h * 15),
@@ -310,5 +315,140 @@ class _RegisterState extends State<Register> {
 
   SizedBox sh(double h) {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
+  }
+
+  bool fieldValidation() {
+    if (pwdController.text != pwdController2.text) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Password Mismatch"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+      return false;
+    } else if (nameController.text == "") {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Name can't be empty"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+      return false;
+    } else if (emailController.text == "") {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Invalid Email"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+      return false;
+    } else if (pwdController.text == '') {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Password can't be empty"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+      return false;
+    } else if (!rad) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Agree to TnC !"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+      return false;
+    } else
+      return true;
+  }
+
+  signUpEmail() async {
+    String email = emailController.text;
+    String pwd = pwdController.text;
+    String name = nameController.text;
+    FirebaseAuth auth = FirebaseAuth.instance;
+
+    pref = await SharedPreferences.getInstance();
+    String userType = pref.getString('currentUserType');
+
+    bool newUser;
+
+    await FirebaseAuth.instance
+        .fetchSignInMethodsForEmail(email)
+        .then((authList) {
+      if (authList.isEmpty) {
+        print("New User");
+        newUser = true;
+      } else {
+        print("Already Registered");
+        newUser = false;
+      }
+    });
+
+    if (!newUser) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Already Registered")));
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) {
+        return Login();
+      }), (route) => false);
+    } else {
+      CurrentUser currentUser = CurrentUser(
+        name: name,
+        email: email,
+        userType: userType,
+      );
+
+      try {
+        await auth
+            .createUserWithEmailAndPassword(email: email, password: pwd)
+            .then((credential) {
+          if (credential.user != null) {
+            uid = credential.user.uid;
+            addUsertoDB(name, email, pwd, currentUser.userType);
+          }
+        }).catchError((eror) {
+          print(eror);
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: Text(eror.message),
+            backgroundColor: Colors.red,
+            behavior: SnackBarBehavior.floating,
+          ));
+          auth.currentUser.delete();
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) {
+            return Login();
+          }), (route) => false);
+        });
+      } on FirebaseAuthException catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text(e.message),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+        ));
+      } catch (e) {
+        print(e);
+      }
+    }
+  }
+
+  addUsertoDB(String userName, String email, String pwd, String userType) {
+    FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    String userName = nameController.text;
+    String email = emailController.text;
+
+    CurrentUser currentUser =
+        CurrentUser(name: userName, email: email, uid: uid, userType: userType);
+
+    Map<String, dynamic> map = currentUser.toMap();
+
+    try {
+      firestore.collection('users').doc(uid).set(map).whenComplete(() {
+        print("User added to DB");
+      });
+
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) {
+        return TestScreen();
+      }), (route) => false);
+    } catch (e) {
+      print(e);
+    }
   }
 }

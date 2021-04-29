@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/forgotPassword.dart';
+import 'package:suraj/register.dart';
 import 'package:suraj/testPage.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
@@ -154,11 +155,10 @@ class _LoginState extends State<Login> {
                         ),
                         InkWell(
                           onTap: () {
-                            /* Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (context) {
-                        return Choice();
-                      }),
-                      );*/
+                            Navigator.of(context).pushAndRemoveUntil(
+                                MaterialPageRoute(builder: (context) {
+                              return Register();
+                            }), (route) => false);
                           },
                           child: Text(
                             'Register',
