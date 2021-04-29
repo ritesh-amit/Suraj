@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:suraj/login.dart';
+import 'package:suraj/register.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -56,10 +57,10 @@ class _CustomerChoiceState extends State<CustomerChoice> {
                     splashColor: maC,
                     color: maC,
                     onPressed: () {
-                      /* Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return SignUp('0');
-                    }));*/
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return Register();
+                      }));
                     },
                     padding: EdgeInsets.symmetric(
                         horizontal: b * 25, vertical: h * 15),
