@@ -2,6 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:suraj/forgotPassword.dart';
+import 'package:suraj/testPage.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -111,11 +113,7 @@ class _LoginState extends State<Login> {
                       splashColor: maC,
                       color: maC,
                       onPressed: () {
-                        /*Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CustomerLogin();
-                    }),
-                  );*/
+                        login();
                       },
                       padding: EdgeInsets.symmetric(
                           horizontal: b * 25, vertical: h * 15),
@@ -130,7 +128,13 @@ class _LoginState extends State<Login> {
                     ),
                     sh(40),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return ForgotPassword();
+                          }),
+                        );
+                      },
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(
@@ -230,6 +234,10 @@ class _LoginState extends State<Login> {
         preferences.setBool('isLoggedIn', true);
         // getUserDataFromDb(credential.user.uid);
         preferences.setString('currentUserUID', credential.user.uid);
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) {
+          return TestScreen();
+        }), (route) => false);
       });
     } on FirebaseAuthException catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
