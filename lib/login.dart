@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:suraj/forgotPassword.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -126,7 +127,13 @@ class _LoginState extends State<Login> {
                     ),
                     sh(40),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) {
+                            return ForgotPassword();
+                          }),
+                        );
+                      },
                       child: Text(
                         'Forgot Password?',
                         style: TextStyle(
