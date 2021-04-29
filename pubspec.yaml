@@ -25,13 +25,30 @@ dependencies:
     sdk: flutter
   cloud_firestore: ^1.0.7
   cupertino_icons: ^1.0.2
-  firebase_auth: null
-  firebase_core: null
-  shared_preferences: null
+  firebase_auth:
+  firebase_core:
+  shared_preferences:  
+  carousel_pro:  
+  bottom_navy_bar: ^6.0.0
+  flutter_native_splash: ^0.2.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.8.1
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path_android: "images/worker.png"
+  image_path_ios: "images/worker.png"
+
+
+flutter_native_splash:
+  color: "#FFFFFF"
+  image: images/worker.png
+  android: true
+  ios: true
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

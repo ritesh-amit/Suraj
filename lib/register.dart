@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:suraj/home.dart';
 import 'package:suraj/login.dart';
 import 'package:suraj/models/currentUser.dart';
 import 'package:suraj/testPage.dart';
@@ -445,7 +446,7 @@ class _RegisterState extends State<Register> {
 
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) {
-        return TestScreen();
+        return MyHomePage();
       }), (route) => false);
     } catch (e) {
       print(e);

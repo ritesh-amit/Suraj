@@ -5,6 +5,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/forgotPassword.dart';
 import 'package:suraj/register.dart';
 import 'package:suraj/testPage.dart';
+import 'package:suraj/home.dart';
+import 'package:suraj/homePage.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -236,7 +238,7 @@ class _LoginState extends State<Login> {
         preferences.setString('currentUserUID', credential.user.uid);
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) {
-          return TestScreen();
+          return MyHomePage();
         }), (route) => false);
       });
     } on FirebaseAuthException catch (e) {
