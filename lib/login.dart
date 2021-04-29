@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
@@ -10,6 +12,8 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   TextEditingController emailController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
+  SharedPreferences preferences;
+  bool isLoggedInPressed = false;
   bool isVisible = false;
   @override
   Widget build(BuildContext context) {
@@ -207,5 +211,41 @@ class _LoginState extends State<Login> {
 
   SizedBox sh(double h) {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
+  }
+
+  void login() async {
+    String email = emailController.text;
+    String pwd = pwdController.text;
+    preferences = await SharedPreferences.getInstance();
+
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: pwd)
+          .then((credential) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Welcome Back"),
+          backgroundColor: Color(0xff28797c),
+          behavior: SnackBarBehavior.floating,
+        ));
+        preferences.setBool('isLoggedIn', true);
+        // getUserDataFromDb(credential.user.uid);
+        preferences.setString('currentUserUID', credential.user.uid);
+      });
+    } on FirebaseAuthException catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+
+      setState(() {
+        isLoggedInPressed = false;
+      });
+    } catch (e) {
+      print(e);
+      setState(() {
+        isLoggedInPressed = false;
+      });
+    }
   }
 }

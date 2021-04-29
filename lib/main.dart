@@ -6,6 +6,12 @@ import 'package:flutter/services.dart';
 import 'package:suraj/choice.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  User user = FirebaseAuth.instance.currentUser;
+  bool isLoggedIn = false;
+  SharedPreferences pref = await SharedPreferences.getInstance();
+
   SystemUiOverlayStyle(
     statusBarColor: Colors.transparent,
     statusBarIconBrightness: Brightness.light,
@@ -14,6 +20,11 @@ void main() async {
     systemNavigationBarIconBrightness: Brightness.dark,
     systemNavigationBarDividerColor: Colors.transparent,
   );
+
+  if (user == null)
+    isLoggedIn = false;
+  else
+    isLoggedIn = true;
 
   runApp(MyApp());
 }

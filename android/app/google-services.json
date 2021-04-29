@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "673999978731",
+    "project_id": "cits-46163",
+    "storage_bucket": "cits-46163.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:673999978731:android:90b2df2af3a287a0fb3eae",
+        "android_client_info": {
+          "package_name": "com.example.suraj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "673999978731-49ai45aiemh84en4bj4b4igcv3dd89bp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpcEY7tAhPCEqHgnz1g7tNbUNPNabtD-s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "673999978731-49ai45aiemh84en4bj4b4igcv3dd89bp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

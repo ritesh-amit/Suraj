@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/customerChoice.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
+import 'customerChoice.dart';
 
 class Choice extends StatefulWidget {
   _ChoiceState createState() => _ChoiceState();
 }
 
 class _ChoiceState extends State<Choice> {
+  SharedPreferences pref;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -43,11 +47,7 @@ class _ChoiceState extends State<Choice> {
                 splashColor: maC,
                 color: maC,
                 onPressed: () {
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CustomerChoice();
-                    }),
-                  );
+                  setUserType('customer');
                 },
                 padding:
                     EdgeInsets.symmetric(horizontal: b * 25, vertical: h * 15),
@@ -64,12 +64,7 @@ class _ChoiceState extends State<Choice> {
               MaterialButton(
                 color: maC,
                 onPressed: () {
-                  print("amit");
-                  Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) {
-                      return CustomerChoice();
-                    }),
-                  );
+                  setUserType('provider');
                 },
                 splashColor: maC,
                 shape: RoundedRectangleBorder(
@@ -101,5 +96,14 @@ class _ChoiceState extends State<Choice> {
 
   SizedBox sh(double h) {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
+  }
+
+  setUserType(String userType) async {
+    pref = await SharedPreferences.getInstance();
+
+    pref.setString('currentUserType', userType);
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return CustomerChoice();
+    }));
   }
 }
