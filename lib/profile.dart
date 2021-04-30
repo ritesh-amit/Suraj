@@ -1,8 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:suraj/drawer.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:image_picker/image_picker.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -18,6 +21,8 @@ class _ProfileState extends State<Profile> {
   TextEditingController cityController = TextEditingController();
   TextEditingController countryController = TextEditingController();
   TextEditingController locationController = TextEditingController();
+  File image1File;
+  bool getImage = false;
 
   @override
   Widget build(BuildContext context) {
@@ -57,13 +62,36 @@ class _ProfileState extends State<Profile> {
               padding: EdgeInsets.symmetric(horizontal: b * 20),
               children: [
                 sh(75),
-                Container(
-                  width: b * 150,
-                  height: h * 150,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.green,
-                  ),
+                InkWell(
+                  splashColor: Colors.green,
+                  child: getImage
+                      ? Container(
+                          padding: EdgeInsets.symmetric(horizontal: b * 100),
+                          height: h * 150,
+                          width: b * 150,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.white,
+                          ),
+                          child: Image.file(
+                            image1File,
+                            fit: BoxFit.cover,
+                            height: h * 150,
+                            width: b * 150,
+                          ),
+                        )
+                      : Container(
+                          height: h * 150,
+                          width: b * 150,
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.blueGrey,
+                          ),
+                          child: Container(
+                            child: Icon(Icons.add_a_photo,
+                                color: rc, size: b * 40),
+                          ),
+                        ),
                 ),
                 sh(10),
                 Container(
@@ -72,7 +100,9 @@ class _ProfileState extends State<Profile> {
                     minWidth: b * 100,
                     splashColor: maC,
                     color: maC,
-                    onPressed: () {},
+                    onPressed: () {
+                      pickImage();
+                    },
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(b * 5),
                     ),
@@ -306,6 +336,16 @@ class _ProfileState extends State<Profile> {
         horizontal: b * 20,
       ),
     );
+  }
+
+  pickImage() async {
+    var picker = await ImagePicker().getImage(source: ImageSource.gallery);
+
+    File selectedImage = File(picker.path);
+    setState(() {
+      image1File = selectedImage;
+      getImage = true;
+    });
   }
 
   TextStyle txtS(Color col, double siz, FontWeight wg) {
