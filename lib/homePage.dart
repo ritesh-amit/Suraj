@@ -3,6 +3,7 @@ import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
+import 'drawer.dart';
 
 class HomePage extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
@@ -15,8 +16,17 @@ class HomePage extends StatelessWidget {
     var b = SizeConfig.screenWidth / 400;
     var h = SizeConfig.screenHeight / 800;
     return Scaffold(
+      drawer: DrawerCode(),
       key: _scaffoldkey,
       backgroundColor: Colors.white,
+      appBar: AppBar(
+        backgroundColor: maC,
+        centerTitle: true,
+        title: Text(
+          'Service',
+          style: txtS(Colors.white, 20, FontWeight.w400),
+        ),
+      ),
       body: SafeArea(
         child: Container(
           child:

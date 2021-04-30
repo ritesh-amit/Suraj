@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
+import 'package:suraj/profile.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     HomePage(),
     HomePage(),
-    HomePage(),
+    Profile(),
   ];
 
   void _incrementCounter() {
@@ -32,15 +34,6 @@ class _MyHomePageState extends State<MyHomePage> {
     var b = SizeConfig.screenWidth / 400;
     var h = SizeConfig.screenHeight / 800;
     return Scaffold(
-      drawer: Drawer(),
-      appBar: AppBar(
-        backgroundColor: maC,
-        centerTitle: true,
-        title: Text(
-          'Service',
-          style: txtS(Colors.white, 20, FontWeight.w400),
-        ),
-      ),
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: _currentIndex,
