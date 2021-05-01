@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:suraj/dialogBoxChangePass.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/login.dart';
 import 'Utils/SizeConfig.dart';
@@ -126,220 +127,230 @@ class _ProfileState extends State<Profile> {
                   ),
                 ),
                 sh(20),
-                Row(
-                  children: [
-                    Text(
-                      'Personal Information',
-                      style: txtS(Colors.black, 18, FontWeight.w600),
-                    ),
-                  ],
-                ),
-                sh(20),
                 Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: nameController,
-                    keyboardType: TextInputType.name,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('Full Name'),
-                  ),
-                ),
-                sh(10),
-                Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: emailController,
-                    keyboardType: TextInputType.emailAddress,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('Email'),
-                  ),
-                ),
-                sh(10),
-                Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: phoneController,
-                    keyboardType: TextInputType.number,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('Mobile Number'),
-                  ),
-                ),
-                sh(10),
-                Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: genderController,
-                    keyboardType: TextInputType.name,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('Gender'),
-                  ),
-                ),
-                sh(20),
-                Row(
-                  children: [
-                    Text(
-                      'Set Address',
-                      style: txtS(Colors.black, 18, FontWeight.w600),
-                    ),
-                  ],
-                ),
-                sh(10),
-                Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: addressController,
-                    keyboardType: TextInputType.name,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('Enter Your Address'),
-                  ),
-                ),
-                sh(10),
-                Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: cityController,
-                    keyboardType: TextInputType.name,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('City'),
-                  ),
-                ),
-                sh(10),
-                Container(
-                  width: b * 345,
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(b * 10),
-                  ),
-                  child: TextFormField(
-                    controller: countryController,
-                    keyboardType: TextInputType.name,
-                    style: txtS(Colors.black, 16, FontWeight.w500),
-                    decoration: dec('Country'),
-                  ),
-                ),
-                sh(10),
-                InkWell(
-                  splashColor: maC,
-                  highlightColor: maC,
-                  onTap: () {},
-                  child: Container(
-                    width: b * 345,
-                    padding: EdgeInsets.symmetric(
-                        vertical: h * 15, horizontal: b * 20),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      border: Border.all(color: Colors.black, width: b * 1),
-                      borderRadius: BorderRadius.circular(b * 5),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Set Location',
-                          style: txtS(tc, 16, FontWeight.w400),
+                  color: Colors.white,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Text(
+                            'Personal Information',
+                            style: txtS(Colors.black, 18, FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      sh(20),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                sh(50),
-                InkWell(
-                  splashColor: maC,
-                  highlightColor: maC,
-                  onTap: () {
-                    changeUserDetails();
-                  },
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: b * 20),
-                    padding: EdgeInsets.symmetric(
-                        vertical: h * 15, horizontal: b * 20),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(color: maC, width: b * 2),
-                      borderRadius: BorderRadius.circular(b * 10),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Save',
-                          style: txtS(Colors.black, 20, FontWeight.w400),
+                        child: TextFormField(
+                          controller: nameController,
+                          keyboardType: TextInputType.name,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Full Name'),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                sh(10),
-                InkWell(
-                  splashColor: maC,
-                  highlightColor: maC,
-                  onTap: () {},
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: b * 20),
-                    padding: EdgeInsets.symmetric(
-                        vertical: h * 15, horizontal: b * 20),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(color: maC, width: b * 2),
-                      borderRadius: BorderRadius.circular(b * 10),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Change Password',
-                          style: txtS(Colors.black, 20, FontWeight.w400),
+                      ),
+                      sh(10),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
                         ),
-                      ],
-                    ),
-                  ),
-                ),
-                sh(10),
-                InkWell(
-                  splashColor: maC,
-                  highlightColor: maC,
-                  onTap: () {
-                    logOut();
-                  },
-                  child: Container(
-                    width: b * 320,
-                    margin: EdgeInsets.symmetric(horizontal: b * 20),
-                    padding: EdgeInsets.symmetric(
-                        vertical: h * 15, horizontal: b * 20),
-                    decoration: BoxDecoration(
-                      color: Colors.transparent,
-                      border: Border.all(color: maC, width: b * 2),
-                      borderRadius: BorderRadius.circular(b * 10),
-                    ),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Log Out',
-                          style: txtS(Colors.black, 20, FontWeight.w400),
+                        child: TextFormField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Email'),
                         ),
-                      ],
-                    ),
+                      ),
+                      sh(10),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: TextFormField(
+                          controller: phoneController,
+                          keyboardType: TextInputType.number,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Mobile Number'),
+                        ),
+                      ),
+                      sh(10),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: TextFormField(
+                          controller: genderController,
+                          keyboardType: TextInputType.name,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Gender'),
+                        ),
+                      ),
+                      sh(20),
+                      Row(
+                        children: [
+                          Text(
+                            'Set Address',
+                            style: txtS(Colors.black, 18, FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                      sh(10),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: TextFormField(
+                          controller: addressController,
+                          keyboardType: TextInputType.name,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Enter Your Address'),
+                        ),
+                      ),
+                      sh(10),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: TextFormField(
+                          controller: cityController,
+                          keyboardType: TextInputType.name,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('City'),
+                        ),
+                      ),
+                      sh(10),
+                      Container(
+                        width: b * 345,
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: TextFormField(
+                          controller: countryController,
+                          keyboardType: TextInputType.name,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Country'),
+                        ),
+                      ),
+                      sh(10),
+                      InkWell(
+                        splashColor: maC,
+                        highlightColor: maC,
+                        onTap: () {},
+                        child: Container(
+                          width: b * 345,
+                          padding: EdgeInsets.symmetric(
+                              vertical: h * 15, horizontal: b * 20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border:
+                                Border.all(color: Colors.black, width: b * 1),
+                            borderRadius: BorderRadius.circular(b * 5),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Set Location',
+                                style: txtS(tc, 16, FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      sh(50),
+                      InkWell(
+                        splashColor: maC,
+                        highlightColor: maC,
+                        onTap: () {
+                          changeUserDetails();
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: b * 20),
+                          padding: EdgeInsets.symmetric(
+                              vertical: h * 15, horizontal: b * 20),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(color: maC, width: b * 2),
+                            borderRadius: BorderRadius.circular(b * 10),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Save',
+                                style: txtS(Colors.black, 20, FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      sh(10),
+                      InkWell(
+                        splashColor: maC,
+                        highlightColor: maC,
+                        onTap: () {
+                          dialogBoxChangePass(context);
+                        },
+                        child: Container(
+                          margin: EdgeInsets.symmetric(horizontal: b * 20),
+                          padding: EdgeInsets.symmetric(
+                              vertical: h * 15, horizontal: b * 20),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(color: maC, width: b * 2),
+                            borderRadius: BorderRadius.circular(b * 10),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Change Password',
+                                style: txtS(Colors.black, 20, FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      sh(10),
+                      InkWell(
+                        splashColor: maC,
+                        highlightColor: maC,
+                        onTap: () {
+                          logOut();
+                        },
+                        child: Container(
+                          width: b * 320,
+                          margin: EdgeInsets.symmetric(horizontal: b * 20),
+                          padding: EdgeInsets.symmetric(
+                              vertical: h * 15, horizontal: b * 20),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            border: Border.all(color: maC, width: b * 2),
+                            borderRadius: BorderRadius.circular(b * 10),
+                          ),
+                          child: Row(
+                            children: [
+                              Text(
+                                'Log Out',
+                                style: txtS(Colors.black, 20, FontWeight.w400),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 sh(100),

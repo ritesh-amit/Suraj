@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/profile.dart';
+import 'package:suraj/profilePageService.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -18,15 +19,9 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     HomePage(),
-    HomePage(),
+    ProfileService(),
     Profile(),
   ];
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {

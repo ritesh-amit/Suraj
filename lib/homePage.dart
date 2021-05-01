@@ -6,6 +6,7 @@ import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'drawer.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -114,11 +115,171 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         margin: EdgeInsets.symmetric(
                             horizontal: b * 10, vertical: h * 10),
-                        height: h * 200,
+                        padding: EdgeInsets.symmetric(
+                            horizontal: b * 10, vertical: h * 10),
+                        height: h * 180,
                         decoration: BoxDecoration(
                           color: Colors.white,
-                          border: Border.all(color: maC, width: b * 2),
+                          border: Border.all(color: maC, width: b * 1.5),
                           borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Container(
+                                  height: h * 90,
+                                  width: b * 90,
+                                  decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color: Colors.blueGrey,
+                                  ),
+                                ),
+                                SizedBox(width: b * 10),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      'Name of the Company',
+                                      style: txtS(
+                                          Colors.black45, 12, FontWeight.w400),
+                                    ),
+                                    sh(5),
+                                    Row(
+                                      children: [
+                                        Container(
+                                          width: SizeConfig.screenWidth * 0.4,
+                                          child: Text(
+                                            'Car Cleaning Service Delhi',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: txtS(Colors.black, 16,
+                                                FontWeight.w400),
+                                          ),
+                                        ),
+                                        Icon(MdiIcons.heartOutline,
+                                            color: Colors.grey),
+                                      ],
+                                    ),
+                                    Container(
+                                      width: SizeConfig.screenWidth * 0.63,
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            '',
+                                            style:
+                                                txtS(maC, 16, FontWeight.w600),
+                                          ),
+                                          Spacer(),
+                                          Text(
+                                            '\u20B9500 Fixed Rate',
+                                            style:
+                                                txtS(maC, 16, FontWeight.w600),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            sh(10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(Icons.location_on,
+                                        color: maC, size: b * 16),
+                                    Container(
+                                      width: SizeConfig.screenWidth * 0.2,
+                                      child: Text(
+                                        'Car Cleaning Service Delhi',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: txtS(Colors.black45, 14,
+                                            FontWeight.w400),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.location_on,
+                                        color: maC, size: b * 16),
+                                    Container(
+                                      width: SizeConfig.screenWidth * 0.3,
+                                      child: Text(
+                                        '108 Km from You',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: txtS(Colors.black45, 14,
+                                            FontWeight.w400),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    Icon(Icons.lock_clock,
+                                        color: maC, size: b * 16),
+                                    Container(
+                                      width: SizeConfig.screenWidth * 0.2,
+                                      child: Text(
+                                        '26 Days ago',
+                                        overflow: TextOverflow.ellipsis,
+                                        style: txtS(Colors.black45, 14,
+                                            FontWeight.w400),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                            sh(10),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    Icon(MdiIcons.starOutline,
+                                        color: Colors.grey, size: b * 16),
+                                    Icon(MdiIcons.starOutline,
+                                        color: Colors.grey, size: b * 16),
+                                    Icon(MdiIcons.starOutline,
+                                        color: Colors.grey, size: b * 16),
+                                    Icon(MdiIcons.starOutline,
+                                        color: Colors.grey, size: b * 16),
+                                    Icon(MdiIcons.starOutline,
+                                        color: Colors.grey, size: b * 16),
+                                    Text(
+                                      '(0/5)',
+                                      overflow: TextOverflow.ellipsis,
+                                      style: txtS(maC, 14, FontWeight.w400),
+                                    ),
+                                  ],
+                                ),
+                                Container(
+                                  width: SizeConfig.screenWidth * 0.2,
+                                  child: Text(
+                                    '3 Jobs Done',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: txtS(
+                                        Colors.black45, 14, FontWeight.w400),
+                                  ),
+                                ),
+                                Container(
+                                  width: SizeConfig.screenWidth * 0.25,
+                                  child: Text(
+                                    '21% Completion',
+                                    overflow: TextOverflow.ellipsis,
+                                    style: txtS(
+                                        Colors.black45, 14, FontWeight.w400),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ]);
