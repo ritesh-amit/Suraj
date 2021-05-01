@@ -1,14 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:location/location.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'drawer.dart';
 
-class HomePage extends StatelessWidget {
-  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
 
+class _HomePageState extends State<HomePage> {
+  final GlobalKey<ScaffoldState> _scaffoldkey = GlobalKey<ScaffoldState>();
   final TextEditingController emailController = TextEditingController();
+  Location location = Location();
+  bool serviceEnabled;
+  PermissionStatus permissionStatus;
+  LocationData locationData;
+
+  @override
+  void initState() {
+    super.initState();
+    locationRequest();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -146,5 +161,49 @@ class HomePage extends StatelessWidget {
 
   SizedBox sh(double h) {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
+  }
+
+  locationRequest() async {
+    serviceEnabled = await location.serviceEnabled();
+    bool permissionsOK;
+
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (serviceEnabled)
+        permissionsOK = true;
+      else
+        permissionsOK = false;
+    } else
+      permissionsOK = true;
+
+    permissionStatus = await location.hasPermission();
+    if (permissionStatus == PermissionStatus.denied) {
+      permissionStatus = await location.requestPermission();
+
+      if (permissionStatus == PermissionStatus.denied ||
+          permissionStatus == PermissionStatus.deniedForever) {
+        permissionsOK = false;
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: Text("Permission Required"),
+          backgroundColor: Colors.red,
+        ));
+      } else
+        permissionsOK = true;
+    } else if (permissionStatus == PermissionStatus.deniedForever)
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Insufficient Permission"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
+    else
+      permissionsOK = true;
+
+    if (permissionsOK) {
+    } else
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Insufficient Permission"),
+        backgroundColor: Colors.red,
+        behavior: SnackBarBehavior.floating,
+      ));
   }
 }

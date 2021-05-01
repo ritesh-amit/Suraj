@@ -50,12 +50,6 @@ class _MyHomePageState extends State<MyHomePage> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.people),
-            title: Text('Users'),
-            activeColor: Colors.white,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
             icon: Icon(Icons.message),
             title: Text(
               'Messages',
@@ -66,6 +60,12 @@ class _MyHomePageState extends State<MyHomePage> {
           BottomNavyBarItem(
             icon: Icon(Icons.notifications),
             title: Text('Notifications'),
+            activeColor: Colors.white,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.people),
+            title: Text('Users'),
             activeColor: Colors.white,
             textAlign: TextAlign.center,
           ),

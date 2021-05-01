@@ -23,16 +23,18 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  bottom_navy_bar: ^6.0.0
+  cached_network_image: ^2.5.1
+  carousel_pro: null
   cloud_firestore: ^1.0.7
   cupertino_icons: ^1.0.2
-  firebase_auth:
-  firebase_core:
-  shared_preferences:  
-  carousel_pro:  
-  bottom_navy_bar: ^6.0.0
+  firebase_auth: null
+  firebase_core: null
+  firebase_storage: ^8.0.5
   flutter_native_splash: ^0.2.2
-  image_picker:
-  cached_network_image: ^2.5.1
+  image_picker: null
+  location: ^4.1.1
+  shared_preferences: null
 
 dev_dependencies:
   flutter_test:
@@ -44,7 +46,6 @@ flutter_icons:
   ios: true
   image_path_android: "images/worker.png"
   image_path_ios: "images/worker.png"
-
 
 flutter_native_splash:
   color: "#FFFFFF"
