@@ -33,6 +33,7 @@ dependencies:
   flutter_native_splash: ^0.2.2
   image_picker:
   cached_network_image: ^2.5.1
+  flutter_animated_dialog:
 
 dev_dependencies:
   flutter_test:

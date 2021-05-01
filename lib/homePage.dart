@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suraj/dialogBoxCategory.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -31,31 +32,36 @@ class HomePage extends StatelessWidget {
         child: Container(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            Container(
-              margin:
-                  EdgeInsets.symmetric(horizontal: b * 10, vertical: h * 15),
-              padding:
-                  EdgeInsets.symmetric(horizontal: b * 10, vertical: h * 15),
-              decoration: BoxDecoration(
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withOpacity(0.2),
-                    blurRadius: 20,
-                    spreadRadius: 0,
-                    offset: Offset(0, 0),
-                  ),
-                ],
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(b * 10),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Select Categories',
-                    style: txtS(Colors.black, 16, FontWeight.w400),
-                  ),
-                ],
+            InkWell(
+              onTap: () {
+                dialogBoxCategory(context);
+              },
+              child: Container(
+                margin:
+                    EdgeInsets.symmetric(horizontal: b * 10, vertical: h * 15),
+                padding:
+                    EdgeInsets.symmetric(horizontal: b * 10, vertical: h * 15),
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 20,
+                      spreadRadius: 0,
+                      offset: Offset(0, 0),
+                    ),
+                  ],
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(b * 10),
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Select Categories',
+                      style: txtS(Colors.black, 16, FontWeight.w400),
+                    ),
+                  ],
+                ),
               ),
             ),
             Container(
