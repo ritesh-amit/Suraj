@@ -32,9 +32,10 @@ dependencies:
   firebase_core: null
   firebase_storage: ^8.0.5
   flutter_native_splash: ^0.2.2
-  image_picker: null
   location: ^4.1.1
   shared_preferences: null
+  image_picker:
+  flutter_animated_dialog:
 
 dev_dependencies:
   flutter_test:
