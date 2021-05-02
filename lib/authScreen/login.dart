@@ -2,13 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suraj/forgotPassword.dart';
-import 'package:suraj/register.dart';
+import 'package:suraj/authScreen/forgotPassword.dart';
+import 'package:suraj/authScreen/register.dart';
+import 'package:suraj/home/homeService.dart';
 import 'package:suraj/testPage.dart';
-import 'package:suraj/home.dart';
+import 'package:suraj/home/home.dart';
 import 'package:suraj/homePage.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 
 class Login extends StatefulWidget {
   _LoginState createState() => _LoginState();
@@ -219,10 +220,11 @@ class _LoginState extends State<Login> {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
   }
 
-  void login() async {
+  login() async {
     String email = emailController.text;
     String pwd = pwdController.text;
     preferences = await SharedPreferences.getInstance();
+    String userType = preferences.getString('currentUserType');
 
     try {
       await FirebaseAuth.instance
@@ -234,11 +236,12 @@ class _LoginState extends State<Login> {
           behavior: SnackBarBehavior.floating,
         ));
         preferences.setBool('isLoggedIn', true);
-        // getUserDataFromDb(credential.user.uid);
+
         preferences.setString('currentUserUID', credential.user.uid);
+
         Navigator.of(context).pushAndRemoveUntil(
             MaterialPageRoute(builder: (context) {
-          return MyHomePage();
+          return userType == 'customer' ? MyHomePage() : MyHomePageServices();
         }), (route) => false);
       });
     } on FirebaseAuthException catch (e) {

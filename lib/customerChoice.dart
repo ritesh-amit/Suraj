@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:suraj/login.dart';
-import 'package:suraj/register.dart';
+import 'package:suraj/authScreen/login.dart';
+import 'package:suraj/authScreen/register.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 
