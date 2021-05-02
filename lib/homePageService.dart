@@ -95,7 +95,7 @@ class _HomePageServiceState extends State<HomePageService> {
                     splashColor: maC,
                     color: maC,
                     onPressed: () {
-                      dialogBoxProfile(context);
+                      //dialogBoxProfile(context);
                     },
                     padding: EdgeInsets.symmetric(
                         horizontal: b * 25, vertical: h * 10),
@@ -175,8 +175,8 @@ class _HomePageServiceState extends State<HomePageService> {
 
   showDialogBox() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    if (pref.containsKey('providerProfile')) {
-      if (pref.getBool('providerProfile')) {
+    if (!pref.containsKey('providerProfile')) {
+      if (!pref.getBool('providerProfile')) {
         Future.delayed(Duration(seconds: 2), () {
           dialogBoxProfile(context);
         });
