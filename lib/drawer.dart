@@ -17,6 +17,8 @@ class DrawerCode extends StatefulWidget {
 }
 
 class _DrawerCodeState extends State<DrawerCode> {
+  String name = '';
+  String email = '';
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -44,15 +46,24 @@ class _DrawerCodeState extends State<DrawerCode> {
                 ],
               ),
               sh(15),
-              Text(
-                "Name",
-                style: txtS(Colors.white, 18, FontWeight.w400),
-              ),
-              sh(5),
-              Text(
-                "Email",
-                style: txtS(Colors.white, 18, FontWeight.w400),
-              ),
+              FutureBuilder(
+                  future: getNameAndEmail(),
+                  builder: (context, snap) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          name,
+                          style: txtS(Colors.white, 18, FontWeight.w400),
+                        ),
+                        sh(5),
+                        Text(
+                          email,
+                          style: txtS(Colors.white, 18, FontWeight.w400),
+                        ),
+                      ],
+                    );
+                  }),
               sh(40),
               row(Icons.home, 'Home', null),
               row(Icons.book, 'My Bookings', null),
@@ -105,5 +116,13 @@ class _DrawerCodeState extends State<DrawerCode> {
       fontWeight: wg,
       fontSize: SizeConfig.screenWidth * siz / 400,
     );
+  }
+
+  Future getNameAndEmail() {
+    String uid = FirebaseAuth.instance.currentUser.uid;
+    FirebaseFirestore.instance.collection('users').doc(uid).get().then((snap) {
+      name = snap.data()['name'];
+      email = snap.data()['email'];
+    });
   }
 }

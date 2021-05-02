@@ -9,6 +9,8 @@ import 'drawer.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePageService extends StatefulWidget {
+  final int newOrOld;
+  HomePageService({this.newOrOld});
   @override
   _HomePageServiceState createState() => _HomePageServiceState();
 }
@@ -24,7 +26,10 @@ class _HomePageServiceState extends State<HomePageService> {
   @override
   void initState() {
     super.initState();
-    locationRequest();
+    //locationRequest();
+
+    //dialogBoxProfile(context);
+    showDialogBox();
   }
 
   @override
@@ -164,5 +169,11 @@ class _HomePageServiceState extends State<HomePageService> {
         backgroundColor: Colors.red,
         behavior: SnackBarBehavior.floating,
       ));
+  }
+
+  showDialogBox() {
+    Future.delayed(Duration(seconds: 2), () {
+      dialogBoxProfile(context);
+    });
   }
 }

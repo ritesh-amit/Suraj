@@ -51,10 +51,11 @@ class _DialogBoxProfileState extends State<DialogBoxProfile> {
                   SizedBox(width: b * 20),
                   InkWell(
                     onTap: () {
-                      Navigator.of(context).pushAndRemoveUntil(
-                          MaterialPageRoute(builder: (context) {
+                      Navigator.of(context).pop();
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
                         return ProfileService();
-                      }), (route) => false);
+                      }));
                     },
                     child: Text(
                       'Yes!',
@@ -91,7 +92,7 @@ void dialogBoxProfile(BuildContext context) {
     builder: (BuildContext context) {
       return DialogBoxProfile();
     },
-    animationType: DialogTransitionType.slideFromBottomFade,
+    animationType: DialogTransitionType.scale,
     curve: Curves.fastOutSlowIn,
     duration: Duration(milliseconds: 250),
   );

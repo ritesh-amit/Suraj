@@ -18,8 +18,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    HomePageService(),
-    ProfileService(),
+    HomePage(),
+    HomePage(),
     Profile(),
   ];
 

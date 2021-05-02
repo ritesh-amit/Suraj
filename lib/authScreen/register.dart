@@ -6,6 +6,7 @@ import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/home/home.dart';
 import 'package:suraj/authScreen/login.dart';
+import 'package:suraj/home/homeService.dart';
 import 'package:suraj/models/currentUser.dart';
 import 'package:suraj/testPage.dart';
 import '../Utils/SizeConfig.dart';
@@ -428,8 +429,10 @@ class _RegisterState extends State<Register> {
     }
   }
 
-  addUsertoDB(String userName, String email, String pwd, String userType) {
+  addUsertoDB(
+      String userName, String email, String pwd, String userType) async {
     FirebaseFirestore firestore = FirebaseFirestore.instance;
+    SharedPreferences pref = await SharedPreferences.getInstance();
 
     String userName = nameController.text;
     String email = emailController.text;
@@ -446,7 +449,11 @@ class _RegisterState extends State<Register> {
 
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) {
-        return MyHomePage();
+        return userType == 'customer'
+            ? MyHomePage()
+            : MyHomePageServices(
+                newOrOld: 1,
+              );
       }), (route) => false);
     } catch (e) {
       print(e);

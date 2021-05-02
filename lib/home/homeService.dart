@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
+import 'package:suraj/homePageService.dart';
 import 'package:suraj/profile.dart';
 import 'package:suraj/profilePageService.dart';
 import '../Utils/SizeConfig.dart';
@@ -9,17 +10,22 @@ import 'package:flutter/cupertino.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 class MyHomePageServices extends StatefulWidget {
+  final int newOrOld;
+  MyHomePageServices({this.newOrOld});
   @override
-  _MyHomePageServicesState createState() => _MyHomePageServicesState();
+  _MyHomePageServicesState createState() =>
+      _MyHomePageServicesState(newCode: newOrOld);
 }
 
 class _MyHomePageServicesState extends State<MyHomePageServices> {
+  final int newCode;
+  _MyHomePageServicesState({this.newCode});
   int _currentIndex = 0;
   int _counter = 0;
   List<Widget> _widgetOptions = <Widget>[
-    HomePage(),
-    HomePage(),
-    HomePage(),
+    HomePageService(),
+    HomePageService(),
+    HomePageService(),
     ProfileService()
   ];
 
