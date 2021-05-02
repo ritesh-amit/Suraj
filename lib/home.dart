@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
+import 'package:suraj/homePageService.dart';
 import 'package:suraj/profile.dart';
 import 'package:suraj/profilePageService.dart';
 import 'Utils/SizeConfig.dart';
@@ -15,10 +16,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
-  int _counter = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    HomePage(),
+    HomePageService(),
     ProfileService(),
     Profile(),
   ];
