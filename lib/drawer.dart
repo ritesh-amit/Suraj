@@ -121,8 +121,11 @@ class _DrawerCodeState extends State<DrawerCode> {
   Future getNameAndEmail() {
     String uid = FirebaseAuth.instance.currentUser.uid;
     FirebaseFirestore.instance.collection('users').doc(uid).get().then((snap) {
-      name = snap.data()['name'];
-      email = snap.data()['email'];
+      if (mounted)
+        setState(() {
+          name = snap.data()['name'];
+          email = snap.data()['email'];
+        });
     });
   }
 }

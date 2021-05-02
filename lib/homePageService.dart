@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/dialogBoxProfile.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
@@ -171,9 +172,14 @@ class _HomePageServiceState extends State<HomePageService> {
       ));
   }
 
-  showDialogBox() {
-    Future.delayed(Duration(seconds: 2), () {
-      dialogBoxProfile(context);
-    });
+  showDialogBox() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (pref.containsKey('providerProfile')) {
+      if (pref.getBool('providerProfile')) {
+        Future.delayed(Duration(seconds: 2), () {
+          dialogBoxProfile(context);
+        });
+      }
+    }
   }
 }
