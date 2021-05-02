@@ -3,24 +3,24 @@ import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/profile.dart';
 import 'package:suraj/profilePageService.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
-class MyHomePage extends StatefulWidget {
+class MyHomePageServices extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePageServicesState createState() => _MyHomePageServicesState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageServicesState extends State<MyHomePageServices> {
   int _currentIndex = 0;
   int _counter = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     HomePage(),
-    ProfileService(),
-    Profile(),
+    HomePage(),
+    ProfileService()
   ];
 
   @override

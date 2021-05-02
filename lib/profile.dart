@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/dialogBoxChangePass.dart';
 import 'package:suraj/drawer.dart';
-import 'package:suraj/login.dart';
+import 'package:suraj/authScreen/login.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';

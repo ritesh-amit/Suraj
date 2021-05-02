@@ -1,16 +1,11 @@
-import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suraj/dialogBoxChangePass.dart';
 import 'package:suraj/drawer.dart';
-import 'package:suraj/login.dart';
+import 'package:suraj/home/homeService.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:image_picker/image_picker.dart';
 
 class ProfileService extends StatefulWidget {
   @override
@@ -77,7 +72,7 @@ class _ProfileServiceState extends State<ProfileService> {
                           borderRadius: BorderRadius.circular(b * 10),
                         ),
                         child: TextFormField(
-                          controller: nameController,
+                          controller: specialController,
                           keyboardType: TextInputType.name,
                           style: txtS(Colors.black, 16, FontWeight.w500),
                           decoration: dec('Your Speciality'),
@@ -123,27 +118,16 @@ class _ProfileServiceState extends State<ProfileService> {
                         ),
                       ),
                       sh(10),
-                      InkWell(
-                        splashColor: maC,
-                        highlightColor: maC,
-                        onTap: () {},
-                        child: Container(
-                          padding: EdgeInsets.symmetric(
-                              vertical: h * 15, horizontal: b * 20),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border:
-                                Border.all(color: Colors.black, width: b * 1),
-                            borderRadius: BorderRadius.circular(b * 5),
-                          ),
-                          child: Row(
-                            children: [
-                              Text(
-                                'Click to set Your Location',
-                                style: txtS(tc, 16, FontWeight.w400),
-                              ),
-                            ],
-                          ),
+                      Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(b * 10),
+                        ),
+                        child: TextFormField(
+                          controller: locationController,
+                          keyboardType: TextInputType.name,
+                          style: txtS(Colors.black, 16, FontWeight.w500),
+                          decoration: dec('Your Location'),
                         ),
                       ),
                       sh(10),
@@ -154,9 +138,9 @@ class _ProfileServiceState extends State<ProfileService> {
                         ),
                         child: TextFormField(
                           controller: rateController,
-                          keyboardType: TextInputType.name,
+                          keyboardType: TextInputType.number,
                           style: txtS(Colors.black, 16, FontWeight.w500),
-                          decoration: dec('Your Rate'),
+                          decoration: dec('My Rate'),
                         ),
                       ),
                       sh(10),
@@ -251,5 +235,46 @@ class _ProfileServiceState extends State<ProfileService> {
 
   SizedBox sh(double h) {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
+  }
+
+  saveData() {
+    String uid = FirebaseAuth.instance.currentUser.uid;
+
+    String speciality = specialController.text.trim();
+    String name = nameController.text.trim();
+    String city = cityController.text.trim();
+    String country = countryController.text.trim();
+    String location = locationController.text.trim();
+    String rate = rateController.text.trim();
+    String bio = bioController.text.trim();
+    String des = descriController.text.trim();
+
+    Map<String, dynamic> map = {
+      'name': name,
+      'speciality': speciality,
+      'city': city,
+      'country': country,
+      'location': location,
+      'rate': rate,
+      'bio': bio,
+      'des': des
+    };
+
+    FirebaseFirestore.instance
+        .collection('users')
+        .doc(uid)
+        .update(map)
+        .then((value) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Profile Updated"),
+        backgroundColor: Colors.green,
+        behavior: SnackBarBehavior.floating,
+      ));
+
+      Navigator.of(context).pushAndRemoveUntil(
+          MaterialPageRoute(builder: (context) {
+        return MyHomePageServices();
+      }), (route) => false);
+    });
   }
 }

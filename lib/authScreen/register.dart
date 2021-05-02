@@ -4,12 +4,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suraj/home.dart';
-import 'package:suraj/login.dart';
+import 'package:suraj/home/home.dart';
+import 'package:suraj/authScreen/login.dart';
 import 'package:suraj/models/currentUser.dart';
 import 'package:suraj/testPage.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 
 class Register extends StatefulWidget {
   _RegisterState createState() => _RegisterState();
