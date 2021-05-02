@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:suraj/dialogBoxProfile.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -86,7 +87,9 @@ class _HomePageServiceState extends State<HomePageService> {
                     minWidth: b * 120,
                     splashColor: maC,
                     color: maC,
-                    onPressed: () {},
+                    onPressed: () {
+                      dialogBoxProfile(context);
+                    },
                     padding: EdgeInsets.symmetric(
                         horizontal: b * 25, vertical: h * 10),
                     shape: RoundedRectangleBorder(
