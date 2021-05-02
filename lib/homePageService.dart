@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:suraj/dialogBoxProfile.dart';
+import 'package:suraj/drawer2.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -38,7 +39,7 @@ class _HomePageServiceState extends State<HomePageService> {
     var b = SizeConfig.screenWidth / 400;
     var h = SizeConfig.screenHeight / 800;
     return Scaffold(
-      drawer: DrawerCode(),
+      drawer: DrawerCode2(),
       key: _scaffoldkey,
       backgroundColor: Colors.white,
       appBar: AppBar(
