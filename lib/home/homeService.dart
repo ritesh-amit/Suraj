@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:suraj/drawer.dart';
-import 'package:suraj/homePage.dart';
 import 'package:suraj/homePageService.dart';
-import 'package:suraj/profile.dart';
 import 'package:suraj/profilePageService.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
@@ -21,7 +18,6 @@ class _MyHomePageServicesState extends State<MyHomePageServices> {
   final int newCode;
   _MyHomePageServicesState({this.newCode});
   int _currentIndex = 0;
-  int _counter = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePageService(),
     HomePageService(),
@@ -51,22 +47,22 @@ class _MyHomePageServicesState extends State<MyHomePageServices> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.message),
+            icon: Icon(Icons.book_online),
+            title: Text('Bookings'),
+            activeColor: Colors.white,
+            textAlign: TextAlign.center,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.chat),
             title: Text(
-              'Messages',
+              'Chat',
             ),
             activeColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.notifications),
+            icon: Icon(Icons.notifications_on),
             title: Text('Notifications'),
-            activeColor: Colors.white,
-            textAlign: TextAlign.center,
-          ),
-          BottomNavyBarItem(
-            icon: Icon(Icons.people),
-            title: Text('Users'),
             activeColor: Colors.white,
             textAlign: TextAlign.center,
           ),
