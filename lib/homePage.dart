@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:suraj/dialogBoxCategory.dart';
+import 'package:suraj/drawers/drawer.dart';
 import 'package:suraj/info.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'drawer.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePage extends StatefulWidget {
@@ -110,7 +110,7 @@ class _HomePageState extends State<HomePage> {
                   physics: BouncingScrollPhysics(),
                   shrinkWrap: true,
                   padding: EdgeInsets.zero,
-                  itemCount: 20,
+                  itemCount: 5,
                   itemBuilder: (BuildContext ctxt, int index) {
                     return InkWell(
                       onTap: () {

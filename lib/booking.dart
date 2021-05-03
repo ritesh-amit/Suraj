@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suraj/home/home.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -210,7 +211,12 @@ class _BookingState extends State<Booking> {
                 minWidth: b * 240,
                 splashColor: maC,
                 color: maC,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(
+                      MaterialPageRoute(builder: (context) {
+                    return MyHomePage();
+                  }), (route) => false);
+                },
                 padding:
                     EdgeInsets.symmetric(horizontal: b * 25, vertical: h * 20),
                 shape: RoundedRectangleBorder(

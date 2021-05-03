@@ -3,20 +3,20 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 
-class DrawerCode extends StatefulWidget {
+class DrawerCode2 extends StatefulWidget {
   final String userName;
   final String email;
-  DrawerCode({
+  DrawerCode2({
     this.userName,
     this.email,
   });
-  _DrawerCodeState createState() => _DrawerCodeState();
+  _DrawerCode2State createState() => _DrawerCode2State();
 }
 
-class _DrawerCodeState extends State<DrawerCode> {
+class _DrawerCode2State extends State<DrawerCode2> {
   String name = '';
   String email = '';
   @override
@@ -66,13 +66,13 @@ class _DrawerCodeState extends State<DrawerCode> {
                   }),
               sh(40),
               row(Icons.home, 'Home', null),
-              row(Icons.book, 'My Bookings', null),
+              row(Icons.book, 'Current Bookings', null),
               row(Icons.chat, 'Chats', null),
-              row(Icons.receipt, 'Receipt', null),
-              row(Icons.person_search_outlined, 'Search Jobs', null),
-              row(Icons.wallet_giftcard, 'My Wallet', null),
+              row(Icons.book, 'My Bookings', null),
+              row(Icons.receipt, 'Receipts', null),
               row(Icons.person, 'Profile', null),
-              row(Icons.notifications, 'Notifications', null),
+              row(Icons.wallet_giftcard, 'My Wallet', null),
+              row(Icons.attach_money, 'My Earning', null),
             ],
           ),
         ),
@@ -121,11 +121,8 @@ class _DrawerCodeState extends State<DrawerCode> {
   Future getNameAndEmail() {
     String uid = FirebaseAuth.instance.currentUser.uid;
     FirebaseFirestore.instance.collection('users').doc(uid).get().then((snap) {
-      if (mounted)
-        setState(() {
-          name = snap.data()['name'];
-          email = snap.data()['email'];
-        });
+      name = snap.data()['name'];
+      email = snap.data()['email'];
     });
   }
 }

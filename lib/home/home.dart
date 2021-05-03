@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:suraj/drawer.dart';
+import 'package:suraj/booking.dart';
+import 'package:suraj/chatSection.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/homePageService.dart';
 import 'package:suraj/profile.dart';
@@ -18,8 +19,8 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    HomePage(),
-    HomePage(),
+    Booking(),
+    ChatSection(),
     Profile(),
   ];
 
@@ -45,16 +46,16 @@ class _MyHomePageState extends State<MyHomePage> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.message),
+            icon: Icon(Icons.book_online),
             title: Text(
-              'Messages',
+              'My Booking',
             ),
             activeColor: Colors.white,
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.notifications),
-            title: Text('Notifications'),
+            icon: Icon(Icons.chat_bubble),
+            title: Text('Chats'),
             activeColor: Colors.white,
             textAlign: TextAlign.center,
           ),
