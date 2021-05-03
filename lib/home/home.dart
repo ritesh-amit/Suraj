@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suraj/bookingList.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/homePageService.dart';
@@ -18,7 +19,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    HomePage(),
+    BookingList(),
     HomePage(),
     Profile(),
   ];
