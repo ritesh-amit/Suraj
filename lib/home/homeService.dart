@@ -22,7 +22,7 @@ class _MyHomePageServicesState extends State<MyHomePageServices> {
     HomePageService(),
     HomePageService(),
     HomePageService(),
-    ProfileService()
+    HomePageService()
   ];
 
   @override

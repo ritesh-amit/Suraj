@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/home/homeService.dart';
 import 'package:suraj/homePageService.dart';
@@ -238,8 +239,9 @@ class _ProfileServiceState extends State<ProfileService> {
     return SizedBox(height: SizeConfig.screenHeight * h / 896);
   }
 
-  saveData() {
+  saveData() async {
     String uid = FirebaseAuth.instance.currentUser.uid;
+    SharedPreferences pref = await SharedPreferences.getInstance();
 
     String speciality = specialController.text.trim();
     String name = nameController.text.trim();
@@ -271,7 +273,7 @@ class _ProfileServiceState extends State<ProfileService> {
         backgroundColor: Colors.green,
         behavior: SnackBarBehavior.floating,
       ));
-
+      pref.setBool('providerProfile', true);
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) {
         return MyHomePageServices();

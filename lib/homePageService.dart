@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/dialogBoxProfile.dart';
 import 'package:suraj/drawer2.dart';
 import 'Utils/SizeConfig.dart';
@@ -94,7 +95,7 @@ class _HomePageServiceState extends State<HomePageService> {
                     splashColor: maC,
                     color: maC,
                     onPressed: () {
-                      dialogBoxProfile(context);
+                      //dialogBoxProfile(context);
                     },
                     padding: EdgeInsets.symmetric(
                         horizontal: b * 25, vertical: h * 10),
@@ -172,9 +173,14 @@ class _HomePageServiceState extends State<HomePageService> {
       ));
   }
 
-  showDialogBox() {
-    Future.delayed(Duration(seconds: 2), () {
-      dialogBoxProfile(context);
-    });
+  showDialogBox() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    if (!pref.containsKey('providerProfile')) {
+      if (!pref.getBool('providerProfile')) {
+        Future.delayed(Duration(seconds: 2), () {
+          dialogBoxProfile(context);
+        });
+      }
+    }
   }
 }
