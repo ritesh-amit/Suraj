@@ -3,6 +3,7 @@ import 'package:suraj/bookingList.dart';
 import 'package:suraj/drawer.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/homePageService.dart';
+import 'package:suraj/notifications.dart';
 import 'package:suraj/profile.dart';
 import 'package:suraj/profilePageService.dart';
 import '../Utils/SizeConfig.dart';
@@ -20,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     BookingList(),
-    HomePage(),
+    Notifications(),
     Profile(),
   ];
 
