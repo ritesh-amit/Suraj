@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 class DialogBoxChangePass extends StatefulWidget {

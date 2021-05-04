@@ -5,12 +5,12 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suraj/dialogBoxChangePass.dart';
+import 'package:suraj/dialogBoxes/dialogBoxChangePass.dart';
 
 import 'package:suraj/authScreen/login.dart';
 import 'package:suraj/drawers/drawer.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:image_picker/image_picker.dart';
 

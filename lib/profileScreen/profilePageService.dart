@@ -6,8 +6,8 @@ import 'package:suraj/drawers/drawer.dart';
 import 'package:suraj/drawers/drawer2.dart';
 import 'package:suraj/home/homeService.dart';
 import 'package:suraj/homePageService.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProfileService extends StatefulWidget {

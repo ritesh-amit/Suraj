@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suraj/customerChoice.dart';
+import 'package:suraj/startupScreens/customerChoice.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
-import '../customerChoice.dart';
+import 'customerChoice.dart';
 
 class Choice extends StatefulWidget {
   _ChoiceState createState() => _ChoiceState();

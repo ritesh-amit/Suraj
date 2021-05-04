@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:suraj/dialogBoxProfile.dart';
+import 'package:suraj/dialogBoxes/dialogBoxProfile.dart';
 import 'package:suraj/drawers/drawer2.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';

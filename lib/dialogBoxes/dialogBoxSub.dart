@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:suraj/dialogBoxSub.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
-class DialogBoxCategory extends StatefulWidget {
-  _DialogBoxCategoryState createState() => _DialogBoxCategoryState();
+class DialogBoxSubCategory extends StatefulWidget {
+  _DialogBoxSubCategoryState createState() => _DialogBoxSubCategoryState();
 }
 
-class _DialogBoxCategoryState extends State<DialogBoxCategory> {
+class _DialogBoxSubCategoryState extends State<DialogBoxSubCategory> {
   TextEditingController manualAmountController = TextEditingController();
   List category = [
-    "Wood Services",
-    "Plumber",
-    "Car Washing",
-    "Bike Mechanic",
-    "Home Interior",
-    "Musician",
-    "Dancer",
-    "Teacher",
-    "Carpenter",
+    "Category",
+    "Category",
+    "Category",
+    "Category",
+    "Category",
+    "Category",
+    "Category",
+    "Category",
+    "Category",
   ];
   ScrollController _scrollController = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    bool amit = true;
     var b = SizeConfig.screenWidth / 400;
     var h = SizeConfig.screenHeight / 800;
     return Dialog(
-      insetPadding: EdgeInsets.only(top: h * 300),
+      backgroundColor: maC,
+      insetPadding: EdgeInsets.only(top: h * 500, left: b * 20, right: b * 20),
       child: SingleChildScrollView(
         controller: _scrollController,
         child: Column(mainAxisSize: MainAxisSize.min, children: [
@@ -41,9 +40,9 @@ class _DialogBoxCategoryState extends State<DialogBoxCategory> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Select Category',
+                  'Select Sub-Category',
                   textAlign: TextAlign.center,
-                  style: txtS(textColor, 18, FontWeight.w600),
+                  style: txtS(Colors.white, 18, FontWeight.w600),
                 ),
                 sh(20),
                 ListView.builder(
@@ -54,17 +53,14 @@ class _DialogBoxCategoryState extends State<DialogBoxCategory> {
                     itemBuilder: (BuildContext ctxt, int index) {
                       return Column(children: [
                         InkWell(
-                          onTap: () {
-                            Navigator.pop(context);
-                            dialogBoxSubCategory(context);
-                          },
+                          onTap: () {},
                           child: Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: b * 20, vertical: h * 20),
                             alignment: Alignment.centerLeft,
                             decoration: BoxDecoration(
                               border: Border.all(
-                                  color: Colors.grey[300], width: b * 0.5),
+                                  color: Colors.black, width: b * 0.5),
                               boxShadow: [
                                 BoxShadow(
                                   color: Colors.black.withOpacity(0.2),
@@ -74,11 +70,11 @@ class _DialogBoxCategoryState extends State<DialogBoxCategory> {
                                 ),
                               ],
                               color: Colors.white,
-                              borderRadius: BorderRadius.circular(b * 10),
+                              borderRadius: BorderRadius.circular(b * 5),
                             ),
                             child: Text(
                               category[index],
-                              style: txtS(Colors.black, 16, FontWeight.w400),
+                              style: txtS(Colors.black54, 16, FontWeight.w400),
                             ),
                           ),
                         ),
@@ -106,12 +102,12 @@ class _DialogBoxCategoryState extends State<DialogBoxCategory> {
   }
 }
 
-void dialogBoxCategory(BuildContext context) {
+void dialogBoxSubCategory(BuildContext context) {
   showAnimatedDialog(
     context: context,
     barrierDismissible: true,
     builder: (BuildContext context) {
-      return DialogBoxCategory();
+      return DialogBoxSubCategory();
     },
     animationType: DialogTransitionType.slideFromBottomFade,
     curve: Curves.fastOutSlowIn,

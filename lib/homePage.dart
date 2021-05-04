@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
-import 'package:suraj/dialogBoxCategory.dart';
+import 'package:suraj/dialogBoxes/dialogBoxCategory.dart';
 import 'package:suraj/drawers/drawer.dart';
 import 'package:suraj/info.dart';
 import 'Utils/SizeConfig.dart';

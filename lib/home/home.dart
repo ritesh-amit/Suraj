@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:suraj/bookingList.dart';
 import 'package:suraj/chatSection.dart';
 import 'package:suraj/homePage.dart';
-import 'package:suraj/profile.dart';
+import 'package:suraj/profileScreen/profile.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';

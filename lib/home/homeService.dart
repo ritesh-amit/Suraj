@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suraj/homePageService.dart';
-import 'package:suraj/profilePageService.dart';
+import 'package:suraj/profileScreen/profilePageService.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:suraj/profilePageService.dart';
-import 'Utils/SizeConfig.dart';
-import 'Utils/constants.dart';
+import 'package:suraj/profileScreen/profilePageService.dart';
+import '../Utils/SizeConfig.dart';
+import '../Utils/constants.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
 
 class DialogBoxProfile extends StatefulWidget {
