@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/dialogBoxProfile.dart';
-import 'package:suraj/drawer2.dart';
+import 'package:suraj/drawers/drawer2.dart';
 import 'Utils/SizeConfig.dart';
 import 'Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_pro/carousel_pro.dart';
-import 'drawer.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 class HomePageService extends StatefulWidget {

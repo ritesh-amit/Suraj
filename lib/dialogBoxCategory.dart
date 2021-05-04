@@ -11,15 +11,15 @@ class DialogBoxCategory extends StatefulWidget {
 class _DialogBoxCategoryState extends State<DialogBoxCategory> {
   TextEditingController manualAmountController = TextEditingController();
   List category = [
-    "Category",
-    "Category",
-    "Category",
-    "Category",
-    "Category",
-    "Category",
-    "Category",
-    "Category",
-    "Category",
+    "Wood Services",
+    "Plumber",
+    "Car Washing",
+    "Bike Mechanic",
+    "Home Interior",
+    "Musician",
+    "Dancer",
+    "Teacher",
+    "Carpenter",
   ];
   ScrollController _scrollController = ScrollController();
 

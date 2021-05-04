@@ -1,5 +1,5 @@
 import 'package:suraj/Utils/constants.dart';
-import 'package:suraj/drawer.dart';
+import 'drawers/drawer.dart';
 
 import 'Utils/SizeConfig.dart';
 import 'package:flutter/material.dart';
