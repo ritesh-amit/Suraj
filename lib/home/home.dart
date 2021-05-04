@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:suraj/booking.dart';
+import 'package:suraj/bookingList.dart';
 import 'package:suraj/chatSection.dart';
 import 'package:suraj/homePage.dart';
-import 'package:suraj/homePageService.dart';
 import 'package:suraj/profile.dart';
-import 'package:suraj/profilePageService.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +17,7 @@ class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Booking(),
+    BookingList(),
     ChatSection(),
     Profile(),
   ];
