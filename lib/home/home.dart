@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:suraj/bookingList.dart';
+import 'package:suraj/chatHome.dart';
 import 'package:suraj/chatSection.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/profileScreen/profile.dart';
@@ -20,7 +21,8 @@ class _MyHomePageState extends State<MyHomePage> {
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
     BookingList(),
-    ChatSection(),
+    ChatHome(),
+    // ChatSection(),
     Notifications(),
   ];
 
