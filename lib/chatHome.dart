@@ -32,7 +32,7 @@ class ChatHome extends StatelessWidget {
                   shrinkWrap: true,
                   physics: BouncingScrollPhysics(),
                   padding: EdgeInsets.zero,
-                  itemCount: 2,
+                  itemCount: 1,
                   itemBuilder: (BuildContext ctxt, int index) {
                     return Column(children: [
                       InkWell(
@@ -71,12 +71,12 @@ class ChatHome extends StatelessWidget {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          'Name of the Company',
+                                          'John Car Repairing',
                                           style: txtS(Colors.black, 16,
                                               FontWeight.w500),
                                         ),
                                         Text(
-                                          'Message',
+                                          'Hi',
                                           style: txtS(Colors.black45, 14,
                                               FontWeight.w400),
                                         ),
