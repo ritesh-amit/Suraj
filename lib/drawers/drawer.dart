@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/Utils/SizeConfig.dart';
 import 'package:suraj/Utils/constants.dart';
+import 'package:suraj/profileScreen/profile.dart';
 
 class DrawerCode extends StatefulWidget {
   final String userName;
@@ -70,7 +71,7 @@ class _DrawerCodeState extends State<DrawerCode> {
               row(Icons.receipt, 'Receipt', null),
               row(Icons.person_search_outlined, 'Search Jobs', null),
               row(Icons.wallet_giftcard, 'My Wallet', null),
-              row(Icons.person, 'Profile', null),
+              row(Icons.person, 'Profile', Profile()),
               row(Icons.notifications, 'Notifications', null),
             ],
           ),
@@ -85,9 +86,9 @@ class _DrawerCodeState extends State<DrawerCode> {
     return InkWell(
       splashColor: maC,
       onTap: () {
-        /*    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+        Navigator.of(context).push(MaterialPageRoute(builder: (context) {
           return nextPage;
-        }));*/
+        }));
       },
       child: Container(
         height: h * 55,

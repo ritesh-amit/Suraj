@@ -3,6 +3,8 @@ import 'package:suraj/bookingList.dart';
 import 'package:suraj/chatSection.dart';
 import 'package:suraj/homePage.dart';
 import 'package:suraj/profileScreen/profile.dart';
+import 'package:suraj/homePageService.dart';
+import 'package:suraj/notifications.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +21,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     BookingList(),
     ChatSection(),
-    Profile(),
+    Notifications(),
   ];
 
   @override
@@ -58,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
             textAlign: TextAlign.center,
           ),
           BottomNavyBarItem(
-            icon: Icon(Icons.people),
-            title: Text('Users'),
+            icon: Icon(Icons.notifications),
+            title: Text('Notifications'),
             activeColor: Colors.white,
             textAlign: TextAlign.center,
           ),
