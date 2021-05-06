@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:suraj/Utils/SizeConfig.dart';
 import 'package:suraj/Utils/constants.dart';
+import 'package:suraj/myWallet.dart';
 import 'package:suraj/profileScreen/profile.dart';
 
 class DrawerCode extends StatefulWidget {
@@ -70,7 +71,7 @@ class _DrawerCodeState extends State<DrawerCode> {
               row(Icons.chat, 'Chats', null),
               row(Icons.receipt, 'Receipt', null),
               row(Icons.person_search_outlined, 'Search Jobs', null),
-              row(Icons.wallet_giftcard, 'My Wallet', null),
+              row(Icons.wallet_giftcard, 'My Wallet', Wallet()),
               row(Icons.person, 'Profile', Profile()),
               row(Icons.notifications, 'Notifications', null),
             ],

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:suraj/payNow.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
 import 'package:flutter_animated_dialog/flutter_animated_dialog.dart';
@@ -56,7 +57,12 @@ class _DialogBoxPaymentState extends State<DialogBoxPayment> {
                     itemBuilder: (BuildContext ctxt, int index) {
                       return Column(children: [
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (context) {
+                              return PayNow();
+                            }));
+                          },
                           child: Container(
                             padding: EdgeInsets.symmetric(
                                 horizontal: b * 20, vertical: h * 15),

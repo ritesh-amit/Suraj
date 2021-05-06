@@ -23,7 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     BookingList(),
     ChatHome(),
-    Wallet(),
+    Notifications()
   ];
 
   @override
