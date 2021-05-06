@@ -9,6 +9,7 @@ import 'package:suraj/notifications.dart';
 import '../Utils/SizeConfig.dart';
 import '../Utils/constants.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:suraj/myWallet.dart';
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -22,8 +23,7 @@ class _MyHomePageState extends State<MyHomePage> {
     HomePage(),
     BookingList(),
     ChatHome(),
-    // ChatSection(),
-    Notifications(),
+    Wallet(),
   ];
 
   @override
